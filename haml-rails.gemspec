@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'appraisal', '>= 1.0'
 
   s.files        = `git ls-files -z`.split("\0")
-  s.executables  = `git ls-files -z`.split("\0").select{|f| f =~ /\Aexe/ && File.executable?(f) && !File.directory?(f)}
+  s.bindir       = 'exe'
+  s.executables  = `git ls-files -z`.split("\0").select{|f| f =~ /\Aexe/ && File.executable?(f) && !File.directory?(f) }
   s.require_path = 'lib'
 end
