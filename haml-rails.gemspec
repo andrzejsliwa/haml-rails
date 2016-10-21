@@ -29,6 +29,6 @@ Gem::Specification.new do |s|
 
   s.files        = `git ls-files -z`.split("\0")
   s.bindir       = 'exe'
-  s.executables  = `git ls-files -z`.split("\0").select{|f| f =~ /\Aexe/ && File.executable?(f) && !File.directory?(f) }
+  s.executables  = `git ls-files -z`.split("\0").select{|f| f =~ /\A#{s.bindir}/ && File.executable?(f) && !File.directory?(f) }.map {|g| g.sub!(s.bindir+File::SEPARATOR, ''); g}
   s.require_path = 'lib'
 end
