@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
-
 require 'haml-rails'
 
-system `rails generate haml:application_layout convert`
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
 
-system `rake haml:erb2haml`
+system! 'bin/rails g haml:application_layout convert'
+system! 'bin/rake haml:erb2haml'
